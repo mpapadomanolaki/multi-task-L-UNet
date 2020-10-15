@@ -94,6 +94,10 @@ def sliding_window_val(i_city, labeled_areas, label, window_size, step):
     return np.asarray(city)
     
 
+if os.path.exists('xys'):
+    shutil.rmtree('xys')
+os.mkdir('xys')
+
 cities=[]
 for i_city in Ftrain:
  print('train ', i_city)
