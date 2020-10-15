@@ -56,7 +56,7 @@ class MyDataset(Dataset):
         image_id = int(self.data_info.iloc[:,2][index])
 
         find_patch = self.all_imgs[image_id] [:, x:x + self.patch_size, y:y + self.patch_size, :]
-        find_patch = find_patch/255.0
+        find_patch = find_patch/255.0 #normalize patch
 
         find_labels = self.all_labels[image_id] [x:x + self.patch_size, y:y + self.patch_size]
 
