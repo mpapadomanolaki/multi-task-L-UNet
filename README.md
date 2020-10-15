@@ -16,5 +16,6 @@ The proposed method has been implemented on the training images of SpaceNet7 dat
    - Run make_buildings.py to create building binary masks for the first and the last date of every folder
    - Run make_change.py to create the change binary mask for every folder
 
-3. 
+3. Create a folder named 'Fsplit' where we will hold the IDs for the training, validation and testing folders.
+   - Run Fsplit.py
    
