@@ -12,5 +12,5 @@ The proposed method has been implemented on the training images of SpaceNet7 dat
    You should create a /train/ folder which will contain all SpaceNet7 60 folders of SpaceNet7 training images.
    
 2. Preprocess data
-   a. Inside the /train/ folder put the following scripts:
+   - Inside the /train/ folder put the following scripts:
    
