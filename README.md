@@ -21,4 +21,6 @@ The proposed method has been implemented on the training images of SpaceNet7 dat
    
 4. Run create_xys.py to create a csv file with the xy coordinates that will be used to extract the patches during training and validation   
   
-5. 
+5. Download in a folder all scripts of the 'train' folder and run main.py to begin training.
+
+6. Use inf.py to produce the testing predictions.
