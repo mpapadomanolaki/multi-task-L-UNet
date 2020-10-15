@@ -13,14 +13,11 @@ step 16 #define the step that will be used to extract the patches
 Ftrain = np.load('./Fsplit/Ftrain.npy').tolist()
 Fval = np.load('./Fsplit/Fval.npy').tolist()
 
-
-
 def shuffle(vector):
   vector = np.asarray(vector)
   p=np.random.permutation(len(vector))
   vector=vector[p]
   return vector
-
 
 def sliding_window_train(i_city, labeled_areas, label, window_size, step):
     city=[]
@@ -118,7 +115,6 @@ df = pd.DataFrame({'X': list(final_cities[:,0]),
 df.to_csv('./xys/myxys_train.csv', index=False, columns=["X", "Y", "image_ID"])
 
 
-
 cities=[]
 for i_city in Fval:
  print('val ', i_city)
@@ -138,13 +134,3 @@ df = pd.DataFrame({'X': list(final_cities[:,0]),
                    })
 df.to_csv('./xys/myxys_val.csv', index=False, columns=["X", "Y", "image_ID"])
 
-
-
-
-
-
-
-
-
-
-    
