@@ -10,8 +10,8 @@ import random
 patch_s=32 #define the desired patch size
 step 16 #define the step that will be used to extract the patches
 
-Ftrain = np.load('./Fsplit/Ftrain.npy').tolist()
-Fval = np.load('./Fsplit/Fval.npy').tolist()
+Ftrain = np.load('../Fsplit/Ftrain.npy').tolist()
+Fval = np.load('../Fsplit/Fval.npy').tolist()
 
 def shuffle(vector):
   vector = np.asarray(vector)
