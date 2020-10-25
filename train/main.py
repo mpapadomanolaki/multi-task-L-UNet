@@ -31,7 +31,6 @@ mydataset_val = DataLoader(change_dataset_val, batch_size=1, shuffle=False, drop
 
 model = tools.to_cuda(network.U_Net(4,2,32))
 
-
 base_lr=0.0001
 optimizer = optim.Adam(model.parameters(), lr=base_lr)
 weight_tensor=torch.FloatTensor(2)
@@ -52,12 +51,10 @@ criterion_diff=tools.to_cuda(nn.CrossEntropyLoss(tools.to_cuda(diff_tensor)))
 confusion_matrix = tnt.meter.ConfusionMeter(2, normalized=True)
 epochs=30
 
-
 save_folder = 'models' #where to save the models and training progress
 if os.path.exists(save_folder):
     shutil.rmtree(save_folder)
 os.mkdir(save_folder)
-
 
 ff=open('./' + save_folder + '/progress.txt','w')
 
@@ -78,9 +75,7 @@ for epoch in range(1, epochs+1):
 
 ################Calculate Losses#####################
         sum = output + segm1
-
         diff = segm2 - segm1
-
         mychange = bld_batch[-1] - bld_batch[0]
         mychange[mychange==-1]=0
 
@@ -122,9 +117,7 @@ for epoch in range(1, epochs+1):
             confusion_matrix.add(output_conf, target_conf)
 
             sum = output + segm1
-
             diff = segm2 - segm1
-
             mychange = bld_batch[-1] - bld_batch[0]
             mychange[mychange==-1]=0
 
