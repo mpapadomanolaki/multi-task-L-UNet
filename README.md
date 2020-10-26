@@ -20,7 +20,7 @@ The proposed method has been implemented on the training images of SpaceNet7 dat
 ```ruby
     FOLDER = glob.glob('..../train/*_13*')
 ```
-  <space> The folder identity paths will be saved as numpy arrays in a folder named '/Fsplit/'.
+The folder identity paths will be saved as numpy arrays in a folder named '/Fsplit/'.
    
 4. Run create_xys.py to create csv files with the xy coordinates that will be used to extract the patches during training and validation. Inside the script you should set the patch size that you want, as well as the step that wil be used to extract the patches along the x and y dimensions. Provide also your '/Fsplit/' folder destination:
 ```ruby
