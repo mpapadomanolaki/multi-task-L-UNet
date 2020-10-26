@@ -56,5 +56,5 @@ As well as your '/Fsplit/' folder destination path:
 ```ruby
 FOLDER = np.load('..../Fsplit/Ftest.npy').tolist()
 ```
-
+The final predictions as well as the probability maps will be saved in a folder named '/PREDICTIONS/'.
 
