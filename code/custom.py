@@ -28,7 +28,7 @@ class MyDataset(Dataset):
             #create list with the multi-temporal images
             #you can change the step in the for loop to adjust the number of dates you want to exploit
             #Here, I have put a step=2 which creates a list with the first available date, the last available date and 8 intermediate (10 dates)
-            for nd in range(0, nb_dates-1, 2): #    
+            for nd in range(0, nb_dates-1, 2):    
                 im = io.imread(sort_tifs[nd])
                 img.append(im)
             img.append( io.imread(sort_tifs[-1]) )
