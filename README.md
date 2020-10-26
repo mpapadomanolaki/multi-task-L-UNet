@@ -61,7 +61,7 @@ The final predictions as well as the probability maps will be saved in a folder 
 
 Notice: Here the experiments are performed using 10 dates. Specifically, in the custom.py script, there is the following part:
 ```ruby
-    for nd in range(0, nb_dates-1, 2): #    
+    for nd in range(0, nb_dates-1, 2):    
         im = io.imread(sort_tifs[nd])
         img.append(im)
     img.append( io.imread(sort_tifs[-1]) )
