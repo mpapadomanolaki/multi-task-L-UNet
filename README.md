@@ -17,6 +17,11 @@ The proposed method has been implemented on the training images of SpaceNet7 dat
    - Run make_change.py to create the change binary mask for every folder 
 
 3. Run Fsplit.py to split the training folders to training, validation and testing parts. Inside this script you should provide your destination path of the '/train/' folder: 
+```ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
    - FOLDER = glob.glob('..../train/*_13*')
 The folder identity paths will be saved as numpy arrays in a folder named '/Fsplit/'.
    
