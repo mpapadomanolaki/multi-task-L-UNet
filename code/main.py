@@ -29,7 +29,7 @@ mydataset = DataLoader(change_dataset, batch_size=2, shuffle=True, drop_last=Tru
 change_dataset_val = custom.MyDataset(csv_file_val, val_areas, patch_size, nb_dates)
 mydataset_val = DataLoader(change_dataset_val, batch_size=1, shuffle=False, drop_last=True)
 
-model = tools.to_cuda(network.U_Net(4,2,32)) #here 4 is the number of input channels, 2 is the number of output categories (change or no change)
+model = tools.to_cuda(network.U_Net(4,2,patch_size)) #here 4 is the number of input channels, 2 is the number of output categories (change or no change)
                                              # and 32 is the employed patch size
 
 base_lr=0.0001
