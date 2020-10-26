@@ -49,7 +49,7 @@ def sliding_window(IMAGE, patch_size, step):
       x = x+stride
 
     final_pred = np.zeros((IMAGE.shape[3], IMAGE.shape[4]))
-    print('ok')
+
     for i in range(0, final_pred.shape[0]):
         for j in range(0, final_pred.shape[1]):
             final_pred[i,j] = np.argmax(prediction[i,j]/float(count_image[i,j]))
