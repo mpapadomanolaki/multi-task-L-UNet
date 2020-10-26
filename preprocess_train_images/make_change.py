@@ -7,8 +7,11 @@ import shutil
 
 L = glob.glob('*_13*')
 
-for l in L:
-    print('FOLDER', l)
+cnt = 0
+
+for c in range (0, len(L)):
+    l = L[c]
+    print(c ,'/' ,len(L), ' foders processed')
     if os.path.exists('./{}/change'.format(l)):
         shutil.rmtree('./{}/change'.format(l))
     os.mkdir('./{}/change'.format(l))
@@ -21,5 +24,4 @@ for l in L:
     b2[np.where(b1==1)] = 0
     cv2.imwrite('./' + l + '/change/change.tif', b2)
 
-
-
+    cnt = cnt + 1
