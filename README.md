@@ -33,5 +33,12 @@ Fval = np.load('..../Fsplit/Fval.npy').tolist()
    The csv files will be saved in a folder named '/xys/'. 
   
 5. Download the provided '/code/' folder and run main.py to begin training.
+```ruby
+train_areas = np.load('/home/mariapap/DATA/SPACENET7/EXPS/Fsplit/Ftrain.npy').tolist()
+val_areas = np.load('/home/mariapap/DATA/SPACENET7/EXPS/Fsplit/Fval.npy').tolist()
+
+csv_file_train = '/home/mariapap/DATA/SPACENET7/EXPS/xys/myxys_train.csv'
+csv_file_val = '/home/mariapap/DATA/SPACENET7/EXPS/xys/myxys_val.csv'
+```
 
 6. Use inf.py to produce the testing predictions.
