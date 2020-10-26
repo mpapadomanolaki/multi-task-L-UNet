@@ -32,7 +32,7 @@ Fval = np.load('..../Fsplit/Fval.npy').tolist()
 ```
    The csv files will be saved in a folder named '/xys/'. 
   
-5. Download the provided '/code/' folder and run main.py to begin training. Inside the script you should provide your '/Fsplit/' folder destination as well as the '/xys/' folder destination
+5. Download the provided '/code/' folder and run main.py to begin training. Inside the script you should provide your '/Fsplit/' folder destination path as well as the '/xys/' folder destination path
 ```ruby
 train_areas = np.load('..../Fsplit/Ftrain.npy').tolist()
 val_areas = np.load('..../Fsplit/Fval.npy').tolist()
@@ -48,8 +48,13 @@ model = tools.to_cuda(network.U_Net(4,2,32)) #here 4 is the number of input chan
 Notice that the patch size should be the same as defined in step 4.
 After training, a folder named '/models/' will have been created, where the models from the different epochs will have been saved, as well as a 'progress.txt' file where the accuracies and losses are monitored.
 
-6. Use inf.py to produce the testing predictions. Inside the script you should provide the trained model that you want to use.
+6. Use inf.py to produce the testing predictions. Inside the script you should provide the trained model that you want to use:
 ```ruby
-model.load_state_dict(torch.load('./models/model_9.pt'))
+model.load_state_dict(torch.load('./models/model_.....pt'))
 ```
+As well as your '/Fsplit/' folder destination path:
+```ruby
+FOLDER = np.load('..../Fsplit/Ftest.npy').tolist()
+```
+
 
