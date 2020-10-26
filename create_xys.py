@@ -6,6 +6,7 @@ import cv2
 import pandas as pd
 import glob
 import random
+import shutil
 
 patch_s = 32 #define the desired patch size
 step = 16 #define the step that will be used to extract the patches
