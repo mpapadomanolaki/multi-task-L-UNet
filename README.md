@@ -8,6 +8,7 @@ The proposed method has been implemented on the training images of SpaceNet7 dat
 
 ## Steps
 
+
 1. Download the training images of SpaceNet7 dataset as described in: https://github.com/CosmiQ/CosmiQ_SN7_Baseline
    Rename the downloaded folder '/SN7_buildings_train/' to '/train/'. This folder contains all 60 folders of SpaceNet7 training images.
    
@@ -16,11 +17,10 @@ The proposed method has been implemented on the training images of SpaceNet7 dat
    - Run make_buildings.py to create building binary masks for the first and the last date of every folder
    - Run make_change.py to create the change binary mask for every folder 
 
-3. Create a folder named 'Fsplit' where we will hold the IDs for the training, validation and testing folders as numpy arrays
-   - Run Fsplit.py
+3. Run Fsplit.py to split the training folders to training, validation and testing parts. The folder identity paths will be saved as numpy arrays in a folder named '/Fsplit/'.
    
-4. Run create_xys.py to create a csv file with the xy coordinates that will be used to extract the patches during training and validation   
+4. Run create_xys.py to create csv files with the xy coordinates that will be used to extract the patches during training and validation. The csv files will be saved in a folder named '/xys/'.   
   
-5. Download in a folder all scripts of the 'train' folder and run main.py to begin training.
+5. Download in a folder all scripts of the provided '/code/' folder and run main.py to begin training.
 
 6. Use inf.py to produce the testing predictions.
