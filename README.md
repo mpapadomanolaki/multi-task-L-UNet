@@ -45,7 +45,7 @@ Also, you should provide the patch size you want to use and the number of availa
     patch_size=32
     nb_dates=19
 ```
-Notice that the patch size should be the same as defined in step 4. Here the number of dates is equal to 19, because in the available SpaceNet7 training images, 19 dates is the minimum number of dates provided for a folder. Hence, we want to provide the same number of dates for each of the folders.
+Notice that the patch size should be the same as defined in step 4. Here the number of dates is equal to 19, because in the available SpaceNet7 training images, the available dates in each folder range from 19 to 24. Since we want to provide the same number of dates for each of the folders, we utilize 19 dates from each folder.
                                           
 After training, a folder named '/models/' will have been created, where the models from the different epochs will have been saved, as well as a 'progress.txt' file where the accuracies and losses are monitored.
 
@@ -67,8 +67,8 @@ Notice: Here the experiments are performed using 10 dates. Specifically, in the 
     img.append( io.imread(sort_tifs[-1]) )
     self.all_imgs.append(np.asarray(img))
 ```
-If you notice the for loop, you will observe that we iterate through the 19 dates with a step of 2. After the for loop, we take also the last available date for each folder. In other words, we utilize the first and the last date, as well as 8 intermediate dates. For using a different number of dates, you can change the step in the for loop.
+If you notice the 'for' loop, you will observe that we iterate through the 19 dates with a step of 2. After the for loop, we take also the last available date for each folder. In other words, we utilize the first and the last date, as well as 8 intermediate dates. For using a different number of dates, you can change the step in the 'for' loop.
 
 If you find this work useful, please consider citing:
 
-
+M. Papadomanolaki, M. Vakalopoulou, K. Karantzalos, 'A Deep Multi-Task Learning Framework Coupling Semantic Segmentation and Fully Convolutional LSTM Networks for Urban Change Detection', IEEE Transactions on Geoscience and Remote Sensing
