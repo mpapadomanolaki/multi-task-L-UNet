@@ -3,6 +3,7 @@ import pandas as pd
 from skimage import io
 import torch
 import glob
+from torch.utils.data.dataset import Dataset
 
 class MyDataset(Dataset):
     def __init__(self, csv_path, image_ids, patch_size, nb_dates):
