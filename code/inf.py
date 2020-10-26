@@ -79,7 +79,10 @@ if os.path.exists(save_folder):
 os.mkdir(save_folder)
 
 
-for fold in FOLDER:
+cnt = 1
+for c in range(0, len(FOLDER)):
+
+    fold = FOLDER[c]
 
     all_tifs = glob.glob(fold + '/images/*.tif*')
     years = []
@@ -87,8 +90,7 @@ for fold in FOLDER:
         ff = all_tifs[j].find('monthly_')
         years.append(all_tifs[j][ff+8:ff+12] + all_tifs[j][ff+13:ff+15])
     ind = np.argsort(years)
-    sort_tifs = [all_tifs[i] for i in ind]  #<------
-
+    sort_tifs = [all_tifs[i] for i in ind]
 
     img = []
     for nd in range(0, nb_dates-1, 2):
@@ -103,3 +105,7 @@ for fold in FOLDER:
     prob = np.transpose(prob, (2,0,1))
     io.imsave('./' +save_folder+ '/mL_PRED_' + fold[36:] + '.tif', pred)
     io.imsave('./' +save_folder+ '/mL_PROB_' + fold[36:] + '.tif', prob)
+    
+    print(cnt, '/', len(FOLDER), 'predictions saved')
+    cnt = cnt + 1
+
