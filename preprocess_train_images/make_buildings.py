@@ -4,11 +4,14 @@ import numpy as np
 import cv2
 import glob
 import shutil
-from binary_mask import generate_mask
+from Gbinary_mask import generate_mask
 
 L = glob.glob('*_13*')
+cnt = 0
 
-for l in L:
+for c in range (0, len(L)):
+    l = L[c]
+    print(c ,'/' ,len(L), ' foders processed')
     if os.path.exists('./{}/buildings'.format(l)):
         shutil.rmtree('./{}/buildings'.format(l))
     os.mkdir('./{}/buildings'.format(l))
@@ -35,6 +38,4 @@ for l in L:
          mask = generate_mask(im_path, j)
          cv2.imwrite('./' + l + '/buildings/buildings' +str(J_builds.index(j)+1)+ '.tif', mask)
 
-
-
-
+    cnt = cnt + 1
