@@ -6,8 +6,8 @@ import os
 from tqdm import tqdm
 import torch
 import torch.nn.functional as F
-import networkL
-import tools2 as tools
+import network
+import tools
 import shutil
 
 def sliding_window(IMAGE, patch_size, step):
