@@ -4,7 +4,7 @@ import glob
 import random
 import shutil
 
-FOLDER = glob.glob('/home/mariapap/DATA/SPACENET7/train/*_13*') #give your '/train/' folder destination
+FOLDER = glob.glob('..../train/*_13*') #give your '/train/' folder destination
 random.shuffle(FOLDER)
 Ftrain = FOLDER[0:40]
 Fval = FOLDER[40:50]
