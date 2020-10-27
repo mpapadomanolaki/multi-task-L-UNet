@@ -23,8 +23,8 @@ parser.add_argument('--xys', type=str, default='/home/mariapap/DATA/SPACENET7/EX
                     help='path destination for xys folder')
 parser.add_argument('--patch_size', type=int, default=32,
                     help='dimensions of the patch size you wish to use')
-parser.add_argument('--step', type=int, default=16,
-                    help='step that will be used to extract the patches along the x y dimesnions')
+parser.add_argument('--nb_dates', type=int, default=19,
+                    help='number of available dates')
 
 args = parser.parse_args()
 
@@ -36,7 +36,7 @@ csv_file_train = args.xys + 'myxys_train.csv'
 csv_file_val = args.xys + 'myxys_val.csv'
 
 patch_size = args.patch_size
-nb_dates = args.step
+nb_dates = args.nb_dates
 
 change_dataset =  custom.MyDataset(csv_file_train, train_areas, patch_size, nb_dates)
 mydataset = DataLoader(change_dataset, batch_size=2, shuffle=True, drop_last=True)
