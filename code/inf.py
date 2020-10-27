@@ -9,6 +9,22 @@ import torch.nn.functional as F
 import network
 import tools
 import shutil
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--Fsplit', type=str, default='/home/mariapap/DATA/SPACENET7/EXPS/__TRY_DIFFERENT__/Fsplit/',
+                    help='path destination for Fsplit folder')
+parser.add_argument('--patch_size', type=int, default=256,
+                    help='dimensions of the patch size you wish to use')
+parser.add_argument('--step', type=int, default=128,
+                    help='step that will be used to extract the patches along the x y dimesnions')
+parser.add_argument('--batch_size', type=int, default=1)
+parser.add_argument('--saved_model', type=str, default='./models/model_7.pt',
+                    help='trained model you wish to use')
+
+
+args = parser.parse_args()
+
 
 def sliding_window(IMAGE, patch_size, step):
     prediction = np.zeros((IMAGE.shape[3], IMAGE.shape[4], 2))
@@ -49,7 +65,6 @@ def sliding_window(IMAGE, patch_size, step):
       x = x+stride
 
     final_pred = np.zeros((IMAGE.shape[3], IMAGE.shape[4]))
-
     for i in range(0, final_pred.shape[0]):
         for j in range(0, final_pred.shape[1]):
             final_pred[i,j] = np.argmax(prediction[i,j]/float(count_image[i,j]))
@@ -62,15 +77,15 @@ def sliding_window(IMAGE, patch_size, step):
 
 ########
 
-BATCH_SIZE=1
-patch_size = 256
-step = 128
-model = tools.to_cuda(networkL.U_Net(4,2,256))
-model.load_state_dict(torch.load('./models/model_9.pt'))
+BATCH_SIZE=args.batch_size
+patch_size = args.patch_size
+step = args.step
+model = tools.to_cuda(network.U_Net(4,2,256))
+model.load_state_dict(torch.load('./models/model_7.pt'))
 model=model.cuda(2)
 model.eval()
 
-FOLDER = np.load('/home/mariapap/DATA/SPACENET7/EXPS/Fsplit/Ftest.npy').tolist()
+FOLDER = np.load(args.Fsplit + 'Ftest.npy').tolist()
 nb_dates = 19
 
 save_folder = 'PREDICTIONS' #where to save the testing predictions
@@ -90,7 +105,8 @@ for c in range(0, len(FOLDER)):
         ff = all_tifs[j].find('monthly_')
         years.append(all_tifs[j][ff+8:ff+12] + all_tifs[j][ff+13:ff+15])
     ind = np.argsort(years)
-    sort_tifs = [all_tifs[i] for i in ind]
+    sort_tifs = [all_tifs[i] for i in ind]  #<------
+
 
     img = []
     for nd in range(0, nb_dates-1, 2):
@@ -105,7 +121,5 @@ for c in range(0, len(FOLDER)):
     prob = np.transpose(prob, (2,0,1))
     io.imsave('./' +save_folder+ '/mL_PRED_' + fold[36:] + '.tif', pred)
     io.imsave('./' +save_folder+ '/mL_PROB_' + fold[36:] + '.tif', prob)
-    
     print(cnt, '/', len(FOLDER), 'predictions saved')
     cnt = cnt + 1
-
