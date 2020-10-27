@@ -36,7 +36,7 @@ def sliding_window(IMAGE, patch_size, step):
 
                if (not y+patch_size > IMAGE.shape[4]) and (not x+patch_size > IMAGE.shape[3]):
                 patch = IMAGE[:, :, :, x:x + patch_size, y:y + patch_size]/255.0
-                patch = (torch.from_numpy(patch).float()).cuda(2)
+                patch = tools.to_cuda(torch.from_numpy(patch).float())
                 output, segm1, segm2 = (model(patch))
                 output = F.log_softmax(output)
                 output = output.cpu().data.numpy().squeeze()
@@ -82,7 +82,6 @@ patch_size = args.patch_size
 step = args.step
 model = tools.to_cuda(network.U_Net(4,2,256))
 model.load_state_dict(torch.load('./models/model_7.pt'))
-model=model.cuda(2)
 model.eval()
 
 FOLDER = np.load(args.Fsplit + 'Ftest.npy').tolist()
