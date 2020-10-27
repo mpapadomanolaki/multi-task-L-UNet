@@ -7,12 +7,26 @@ import pandas as pd
 import glob
 import random
 import shutil
+import argparse
 
-patch_s = 32 #define the desired patch size
-step = 16 #define the step that will be used to extract the patches
 
-Ftrain = np.load('..../Fsplit/Ftrain.npy').tolist()
-Fval = np.load('..../Fsplit/Fval.npy').tolist()
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--Fsplit', type=str, default='./Fsplit/',
+                    help='path destination for Fsplit folder')
+parser.add_argument('--patch_size', type=int, default=32,
+                    help='dimensions of the patch size you wish to use')
+parser.add_argument('--step', type=int, default=16,
+                    help='step that will be used to extract the patches along the x y dimesnions')
+
+args = parser.parse_args()
+
+patch_s = args.patch_size
+step = args.step
+
+Ftrain = np.load(args.Fsplit +  'Ftrain.npy').tolist()
+Fval = np.load(args.Fsplit + 'Fval.npy').tolist()
 
 def shuffle(vector):
   vector = np.asarray(vector)
