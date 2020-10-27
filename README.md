@@ -40,7 +40,7 @@ Apart from the proposed method, you can also use the 'preprocess' folder to crea
 
 6. Use inf.py to produce the testing predictions. Inside the script you should provide the trained model that you want to use. The final predictions as well as the probability maps will be saved in a folder named '/PREDICTIONS/'.
 
-_Notice_: Here the experiments are performed using 10 dates. Specifically, in the custom.py script, there is the following part:
+__Notice__: Here the experiments are performed using 10 dates. Specifically, in the custom.py script, there is the following part:
 ```ruby
     for nd in range(0, nb_dates-1, 2):    
         im = io.imread(sort_tifs[nd])
