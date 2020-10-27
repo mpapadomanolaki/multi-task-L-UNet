@@ -9,9 +9,6 @@ import random
 import shutil
 import argparse
 
-
-
-
 parser = argparse.ArgumentParser()
 parser.add_argument('--Fsplit', type=str, default='./Fsplit/',
                     help='path destination for Fsplit folder')
