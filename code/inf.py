@@ -18,7 +18,6 @@ parser.add_argument('--patch_size', type=int, default=256,
                     help='dimensions of the patch size you wish to use')
 parser.add_argument('--step', type=int, default=128,
                     help='step that will be used to extract the patches along the x y dimesnions')
-parser.add_argument('--batch_size', type=int, default=1)
 parser.add_argument('--saved_model', type=str, default='./models/model_7.pt',
                     help='trained model you wish to use')
 
@@ -77,7 +76,6 @@ def sliding_window(IMAGE, patch_size, step):
 
 ########
 
-BATCH_SIZE=args.batch_size
 patch_size = args.patch_size
 step = args.step
 model = tools.to_cuda(network.U_Net(4,2,256))
