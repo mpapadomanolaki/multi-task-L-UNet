@@ -52,4 +52,4 @@ If you notice the 'for' loop, you will observe that we iterate through the 19 da
 
 If you find this work useful, please consider citing:
 
-M. Papadomanolaki, M. Vakalopoulou, K. Karantzalos, 'A Deep Multi-Task Learning Framework Coupling Semantic Segmentation and Fully Convolutional LSTM Networks for Urban Change Detection', IEEE Transactions on Geoscience and Remote Sensing
+M. Papadomanolaki, M. Vakalopoulou, K. Karantzalos, 'A Deep Multi-Task Learning Framework Coupling Semantic Segmentation and Fully Convolutional LSTM Networks for Urban Change Detection', *IEEE Transactions on Geoscience and Remote Sensing*
