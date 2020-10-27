@@ -3,8 +3,16 @@ import os
 import glob
 import random
 import shutil
+import argparse
 
-FOLDER = glob.glob('..../train/*_13*') #give your '/train/' folder destination
+parser = argparse.ArgumentParser()
+parser.add_argument('--train_images_folder', type=str, default='/home/mariapap/DATA/SPACENET7/train/',
+                    help='downloaded folder of SpaceNet7 training images')
+
+args = parser.parse_args()
+
+
+FOLDER = glob.glob(args.train_images_folder + '*_13*') #give your '/train/' folder destination
 random.shuffle(FOLDER)
 Ftrain = FOLDER[0:40]
 Fval = FOLDER[40:50]
