@@ -14,23 +14,36 @@ from torch.utils.data import DataLoader
 import cv2
 import network
 import shutil
+import argparse
 
-train_areas = np.load('/home/mariapap/DATA/SPACENET7/EXPS/Fsplit/Ftrain.npy').tolist()
-val_areas = np.load('/home/mariapap/DATA/SPACENET7/EXPS/Fsplit/Fval.npy').tolist()
+parser = argparse.ArgumentParser()
+parser.add_argument('--Fsplit', type=str, default='/home/mariapap/DATA/SPACENET7/EXPS/__TRY_DIFFERENT__/Fsplit/',
+                    help='path destination for Fsplit folder')
+parser.add_argument('--xys', type=str, default='/home/mariapap/DATA/SPACENET7/EXPS/__TRY_DIFFERENT__/xys/',
+                    help='path destination for xys folder')
+parser.add_argument('--patch_size', type=int, default=32,
+                    help='dimensions of the patch size you wish to use')
+parser.add_argument('--step', type=int, default=16,
+                    help='step that will be used to extract the patches along the x y dimesnions')
 
-csv_file_train = '/home/mariapap/DATA/SPACENET7/EXPS/xys/myxys_train.csv'
-csv_file_val = '/home/mariapap/DATA/SPACENET7/EXPS/xys/myxys_val.csv'
+args = parser.parse_args()
 
-patch_size=32
-nb_dates=19
+
+train_areas = np.load(args.Fsplit + 'Ftrain.npy').tolist()
+val_areas = np.load(args.Fsplit + 'Fval.npy').tolist()
+
+csv_file_train = args.xys + 'myxys_train.csv'
+csv_file_val = args.xys + 'myxys_val.csv'
+
+patch_size = args.patch_size
+nb_dates = args.step
 
 change_dataset =  custom.MyDataset(csv_file_train, train_areas, patch_size, nb_dates)
 mydataset = DataLoader(change_dataset, batch_size=2, shuffle=True, drop_last=True)
 change_dataset_val = custom.MyDataset(csv_file_val, val_areas, patch_size, nb_dates)
 mydataset_val = DataLoader(change_dataset_val, batch_size=1, shuffle=False, drop_last=True)
 
-model = tools.to_cuda(network.U_Net(4,2,patch_size)) #here 4 is the number of input channels, 2 is the number of output categories (change or no change)
-                                             # and 32 is the employed patch size
+model = tools.to_cuda(network.U_Net(4,2,32))
 
 base_lr=0.0001
 optimizer = optim.Adam(model.parameters(), lr=base_lr)
