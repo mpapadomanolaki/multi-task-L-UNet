@@ -4,9 +4,17 @@ import numpy as np
 import cv2
 import glob
 import shutil
-from Gbinary_mask import generate_mask
+import argparse
+from binary_mask import generate_mask
 
-L = glob.glob('*_13*')
+
+parser = argparse.ArgumentParser(description='VAE MNIST Example')
+parser.add_argument('--train_images_folder', type=str, default='./',
+                    help='downloaded folder of SpaceNet7 training images')
+
+args = parser.parse_args()
+
+L = glob.glob(args.train_images_folder + '*_13*')
 cnt = 0
 
 for c in range (0, len(L)):
@@ -27,7 +35,7 @@ for c in range (0, len(L)):
 
     #Use only first and last date to create the buildings binary mask
     J_builds = [f_jsons[0], f_jsons[-1]]
-    if l == 'L15-1716E-1211N_6864_3345_13':
+    if l == args.train_images_folder + 'L15-1716E-1211N_6864_3345_13':
         J_builds = [f_jsons[0], f_jsons[-2]] # for this folder the geojson for the last date does not contain any polygons so we will take
                                              # the second last date
 
