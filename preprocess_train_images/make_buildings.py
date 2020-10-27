@@ -8,7 +8,7 @@ import argparse
 from binary_mask import generate_mask
 
 
-parser = argparse.ArgumentParser(description='VAE MNIST Example')
+parser = argparse.ArgumentParser()
 parser.add_argument('--train_images_folder', type=str, default='./',
                     help='downloaded folder of SpaceNet7 training images')
 
