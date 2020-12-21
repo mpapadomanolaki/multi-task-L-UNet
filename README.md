@@ -2,7 +2,7 @@
 
 This repository includes the code for the following manuscript:
 
-'A Deep Multi-Task Learning Framework Coupling Semantic Segmentation and Fully Convolutional LSTM Networks for Urban Change Detection'
+'A Deep Multi-Task Learning Framework Coupling Semantic Segmentation and Fully Convolutional LSTM Networks for Urban Change Detection', IEEE Transactions on Geoscience and Remote Sensing
 
 The proposed method has been implemented on the training images of SpaceNet7 dataset.
 
