@@ -19,7 +19,7 @@ cnt = 0
 
 for c in range (0, len(L)):
     l = L[c]
-    print(c ,'/' ,len(L), ' foders processed')
+    print(c ,'/' ,len(L), ' folders processed')
     if os.path.exists('./{}/buildings'.format(l)):
         shutil.rmtree('./{}/buildings'.format(l))
     os.mkdir('./{}/buildings'.format(l))
